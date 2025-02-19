@@ -15,17 +15,16 @@ class Sensor:
         """
         Read the raw ADC value
 
-        :return The ADC value (0-4095 for the 12 bit resolution)
+        :return The ADC value (0-65535)
         """
-        return self.adc.read()
+        return self.adc.read_u16()
 
     def read_voltage(self):
         """
         Computes the voltage corresponding to the raw ADC value
 
-        :return The Voltage in volts.
+        :return The Voltage in millivolts.
         """
-        raw_value = self.raw_read()
-        #TODO This value will need some tuning
-        voltage = raw_value * (3.3/4095)
+        #TODO This value will need some tuning and also some configurable parameters
+        voltage = int(self.adc.read_uv() / 1000) - 21
         return voltage

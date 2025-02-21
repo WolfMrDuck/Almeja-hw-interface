@@ -9,7 +9,7 @@ class Sensor:
         :param pin_number: The GPIO pin number to which the sensor is connected.
         :param calibration_factor: The factor to calibrate the reading
         """
-        self.adc = ADC(pin=Pin(pin_number), atten=attenuation)
+        self.adc = ADC(Pin(pin_number), atten=attenuation)
         self.adc.block().init(bits=ADC.WIDTH_12BIT)
         self.calibration_factor = calibration_factor
 

@@ -1,13 +1,15 @@
 from modules import Sensor
+from modules import Switch
+from modules import VoltageController
 import json
 
 config_file = open("config.json",'r')
 cfg = json.load(config_file)
 
 voltmeters = {
-        "solar": Sensor(pin_number=cfg['pin']['solar'],
+        "solar": Sensor(pin_number=cfg['pin']['solar_vm'],
                         calibration_factor=cfg['factor']['solar']),
-        "wind": Sensor(pin_number=cfg['pin']['wind'],
+        "wind": Sensor(pin_number=cfg['pin']['wind_vm'],
                         calibration_factor=cfg['factor']['wind']),
         "batt": Sensor(pin_number=cfg['pin']['batt_vm'],
                         calibration_factor=cfg['factor']['batt_vm']),
@@ -28,3 +30,11 @@ thermometers = {
         "therm3": Sensor(pin_number=cfg['pin']['batt_temp3'],
                         calibration_factor=cfg['factor']['batt_temp3']),
         }
+controllers = {
+        "solar": VoltageController(pin_number=cfg['pin']['solar_vctr']),
+        "wind": VoltageController(pin_number=cfg['pin']['wind_vctr']),
+        }
+
+solar = Switch(pin_number=cfg['pin']['solar_sw'])
+wind = Switch(pin_number=cfg['pin']['wind_sw'])
+battery = Switch(pin_number=cfg['pin']['batt_sw'])

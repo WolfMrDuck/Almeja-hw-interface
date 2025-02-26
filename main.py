@@ -1,10 +1,23 @@
 import time
 
 while True:
+    data = {
+            "voltmeters": {},
+            "ammeters": {},
+            "thermometers": {},
+            "switches": {
+                "solar": solar.state,
+                "wind": wind.state,
+                "battery": battery.state
+                }
+            }
     for key, voltmeter in voltmeters.items():
-        print(f"{key} voltage value is: {voltmeter.read()} mV")
+        data["voltmeters"][key] = voltmeter.read()
     for key, ammeter in ammeters.items():
-        print(f"{key} current value is: {ammeter.read()} mA")
+        data["ammeters"][key] = ammeter.read()
     for key, thermometer in thermometers.items():
-        print(f"{key} temp value is: {thermometer.read()} m°C")
+        data["thermometers"][key] = thermometer.read()
+
+    json_data = json.dumps(data, separators=(',', ':'))
+    print(json_data)
     time.sleep(5)

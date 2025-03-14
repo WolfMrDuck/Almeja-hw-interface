@@ -8,7 +8,10 @@ class Switch:
         :param int pin_number: The GPIO pin number to which the switch is connected.
         """
         self.pin = Pin(pin_number, Pin.OUT)
-        self.state = False
+        if self.pin.value():
+            self.state = True
+        else:
+            self.state = False
 
     def on(self):
         """

@@ -10,16 +10,16 @@
 		"batt_vm": 34,
 		"batt_sw": 5,
 		"batt_amm": 25,
-		"batt_temp1": 27,
+		"batt_temp1": 12,
 		"batt_temp2": 14,
-		"batt_temp3": 12
+		"batt_temp3": 27
 	},
 	"factor": {
 		"solar": 1.0,
 		"wind": 1.0,
 		"source": 1.0,
 		"batt_vm": 1.0,
-		"batt_amm": 1.0,
+		"batt_amm": 0.1,
 		"batt_temp1": 1.0,
 		"batt_temp2": 1.0,
 		"batt_temp3": 1.0

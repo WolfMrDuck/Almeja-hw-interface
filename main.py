@@ -1,10 +1,10 @@
 import time
-
 while True:
     data = {
             "voltmeters": {},
             "ammeters": {},
             "thermometers": {},
+            "controllers": {},
             "switches": {
                 "solar": solar.state,
                 "wind": wind.state,
@@ -17,6 +17,8 @@ while True:
         data["ammeters"][key] = ammeter.read()
     for key, thermometer in thermometers.items():
         data["thermometers"][key] = thermometer.read()
+    for key, controller in controllers.items():
+        data["controllers"][key] = controller.duty_cycle
 
     json_data = json.dumps(data, separators=(',', ':'))
     print(json_data)

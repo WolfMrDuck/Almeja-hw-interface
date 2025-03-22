@@ -10,6 +10,7 @@ class VoltageController:
         :param int freq: The frequency in Hz at the start, at most 40Mhz.
         """
         self.pwm = PWM(Pin(pin_number), freq=freq, duty=duty_cycle)
+        self.duty_cycle = duty_cycle / 10.23
 
     def set_duty_cycle(self, duty_cycle: int):
         """
@@ -18,5 +19,6 @@ class VoltageController:
         :param int duty_cycle: A percentage of duty in each cycle, can be from 0 to 100
         """
         if 0 <= duty_cycle <= 100:
+            self.duty_cycle = duty_cycle
             new_duty_cycle = int(duty_cycle * 10.23)
             self.pwm.duty(new_duty_cycle)

@@ -31,6 +31,8 @@ class Sensor:
         """
         #TODO This value will need some tuning and also some configurable parameters
         voltage = int(self.adc.read_uv() / 1000) - 21
+        if voltage <= 54:
+            return 0
         return voltage
 
     def read(self) -> float:

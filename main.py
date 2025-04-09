@@ -1,4 +1,5 @@
 import time
+from sys import stdin
 from _thread import start_new_thread
 
 def thr_send_data():
@@ -31,7 +32,7 @@ start_new_thread(thr_send_data, ())
 
 while True:
     try:
-        cmd, arg = input().split()
+        cmd, arg = stdin.readline().split()
         cmd = cmd.upper()
         arg = int(arg)
     except:

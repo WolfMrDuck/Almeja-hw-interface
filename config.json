@@ -2,10 +2,10 @@
 	"pin": {
 		"solar_vm": 36,
 		"solar_sw": 17,
-		"solar_vctr": 4,
+		"solar_vctr": 18,
 		"wind_vm": 39,
 		"wind_sw": 16,
-		"wind_vctr": 23,
+		"wind_vctr": 19,
 		"source": 26,
 		"batt_vm": 34,
 		"batt_sw": 5,

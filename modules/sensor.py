@@ -30,8 +30,8 @@ class Sensor:
         :return The Voltage in millivolts.
         """
         #TODO This value will need some tuning and also some configurable parameters
-        voltage = int(self.adc.read_uv() / 1000) - 21
-        if voltage <= 54:
+        voltage = int(self.adc.read_uv() / 1000) - 7
+        if voltage <= 68:
             return 0
         return voltage
 

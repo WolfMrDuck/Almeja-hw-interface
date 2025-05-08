@@ -1,4 +1,5 @@
 import time
+from sys import stdin
 from _thread import start_new_thread
 
 def thr_send_data():
@@ -15,23 +16,39 @@ def thr_send_data():
                     }
                 }
         for key, voltmeter in voltmeters.items():
-            data["voltmeters"][key] = voltmeter.read()
+            data["voltmeters"][key] = 0.0
         for key, ammeter in ammeters.items():
-            data["ammeters"][key] = ammeter.read()
+            data["ammeters"][key] = 0.0
         for key, thermometer in thermometers.items():
-            data["thermometers"][key] = thermometer.read()
+           data["thermometers"][key] = 0.0
+
+        for i in range(cfg['core']['samples_per_read']):
+            for key, voltmeter in voltmeters.items():
+                data["voltmeters"][key] += voltmeter.read()
+            for key, ammeter in ammeters.items():
+                data["ammeters"][key] += ammeter.read()
+            for key, thermometer in thermometers.items():
+               data["thermometers"][key] += thermometer.read()
+
+        for key, voltmeter in voltmeters.items():
+            data["voltmeters"][key] /= cfg['core']['samples_per_read']
+        for key, ammeter in ammeters.items():
+            data["ammeters"][key] /= cfg['core']['samples_per_read']
+        for key, thermometer in thermometers.items():
+           data["thermometers"][key] /= cfg['core']['samples_per_read']
+            
         for key, controller in controllers.items():
             data["controllers"][key] = controller.duty_cycle
     
         json_data = json.dumps(data, separators=(',', ':'))
         print(json_data)
-        time.sleep(5)
+        time.sleep(cfg['core']['read_freq'])
 
 start_new_thread(thr_send_data, ())
 
 while True:
     try:
-        cmd, arg = input().split()
+        cmd, arg = stdin.readline().split()
         cmd = cmd.upper()
         arg = int(arg)
     except:

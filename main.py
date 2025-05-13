@@ -42,7 +42,13 @@ def thr_send_data():
     
         json_data = json.dumps(data, separators=(',', ':'))
         print(json_data)
-        time.sleep(cfg['core']['read_freq'])
+        time.sleep(cfg['core']['read_period'])
+
+def thr_battery_watchdog():
+    for _, thermometer in thermometers.items():
+        if thermometer.read() >= cfg['core']['temp_threshold']:
+            battery.off()
+    time.sleep(cfg['core']['batt_wd_period'])
 
 def safe_solar_on():
     wind.off()
@@ -81,6 +87,6 @@ def instruction_handler():
             controllers['wind'].set_duty_cycle(arg)
 
 start_new_thread(thr_send_data, ())
-
+start_new_thread(thr_battery_watchdog, ())
 
 instruction_handler()

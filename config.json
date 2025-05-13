@@ -25,7 +25,9 @@
 		"batt_temp3": 0.1
 	},
 	"core": {
-		"read_freq": 0.1,
-		"samples_per_read": 16
+		"read_period": 0.1,
+		"samples_per_read": 16,
+		"battery_wd_period": 1,
+		"temp_threshold": 40
 	}
 }

@@ -12,7 +12,9 @@
 		"batt_amm": 25,
 		"batt_temp1": 12,
 		"batt_temp2": 14,
-		"batt_temp3": 27
+		"batt_temp3": 27,
+		"load_sw": 32,
+		"vca_sw": 33
 	},
 	"factor": {
 		"solar": 0.0505077,

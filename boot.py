@@ -39,3 +39,5 @@ controllers = {
 solar = Switch(pin_number=cfg['pin']['solar_sw'])
 wind = Switch(pin_number=cfg['pin']['wind_sw'])
 battery = Switch(pin_number=cfg['pin']['batt_sw'])
+load = Switch(pin_number=cfg['pin']['load_sw'])
+vca = Switch(pin_number=cfg['pin']['vca_sw'])

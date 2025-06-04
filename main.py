@@ -12,7 +12,9 @@ def thr_send_data():
                 "switches": {
                     "solar": solar.state,
                     "wind": wind.state,
-                    "battery": battery.state
+                    "battery": battery.state,
+                    "load": load.state,
+                    "vca": vca.state
                     }
                 }
         for key, voltmeter in voltmeters.items():
@@ -58,6 +60,14 @@ def safe_wind_on():
     solar.off()
     wind.on()
 
+def safe_load_on():
+    vca.off()
+    load.on()
+
+def safe_vca_on():
+    load.off()
+    vca.on()
+
 def instruction_handler():
     while True:
         try:
@@ -81,6 +91,16 @@ def instruction_handler():
                 wind.off()
             elif arg == 1:
                 safe_wind_on()
+        elif cmd == 'L':
+            if arg == 0:
+                load.off()
+            elif arg == 1:
+                safe_load_on()
+        elif cmd == 'V':
+            if arg == 0:
+                vca.off()
+            elif arg == 1:
+                safe_vca_on()
         elif cmd == 'X':
             controllers['solar'].set_duty_cycle(arg)
         elif cmd == 'Y':

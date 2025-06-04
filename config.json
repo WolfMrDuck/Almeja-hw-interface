@@ -10,23 +10,45 @@
 		"batt_vm": 34,
 		"batt_sw": 5,
 		"batt_amm": 25,
-		"batt_temp1": 12,
-		"batt_temp2": 14,
-		"batt_temp3": 27
+		"batt_temp1": 14,
+		"batt_temp2": 12,
+		"batt_temp3": 27,
+		"load_sw": 32,
+		"vca_sw": 33
 	},
 	"factor": {
-		"solar": 0.0505077,
-		"wind": 1.0,
-		"source": 1.0,
-		"batt_vm": 1.0,
-		"batt_amm": 1.0,
+		"solar": 0.04976599552859330735,
+		"wind": 0.05160510370991424884,
+		"source": 0.00693248581828642530,
+		"batt_vm": 0.05084144751815627518,
+		"batt_amm": 0.00712889522048699042,
 		"batt_temp1": 0.1,
 		"batt_temp2": 0.1,
 		"batt_temp3": 0.1
 	},
+	"offset": {
+		"solar": 0,
+		"wind": 0,
+		"source": 0,
+		"batt_vm": 0,
+		"batt_amm": 0,
+		"batt_temp1": 0,
+		"batt_temp2": 0,
+		"batt_temp3": 0
+	},
+	"threshold": {
+		"solar": 75,
+		"wind": 75,
+		"source": 128,
+		"batt_vm": 75,
+		"batt_amm": 128,
+		"batt_temp1": 63,
+		"batt_temp2": 63,
+		"batt_temp3": 63
+	},
 	"core": {
 		"read_period": 0.1,
-		"samples_per_read": 16,
+		"samples_per_read": 32,
 		"battery_wd_period": 1,
 		"temp_threshold": 40
 	}

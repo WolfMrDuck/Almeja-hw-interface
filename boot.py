@@ -1,4 +1,4 @@
-from modules import Sensor, Switch, VoltageController
+from modules import Sensor, Switch, IndicatedSwitch, VoltageController
 from machine import ADC
 import json
 
@@ -53,8 +53,11 @@ controllers = {
         }
 
 
-solar = Switch(pin_number=cfg['pin']['solar_sw'])
-wind = Switch(pin_number=cfg['pin']['wind_sw'])
-battery = Switch(pin_number=cfg['pin']['batt_sw'])
 load = Switch(pin_number=cfg['pin']['load_sw'])
 vca = Switch(pin_number=cfg['pin']['vca_sw'])
+solar = IndicatedSwitch(switch_pin=cfg['pin']['solar_sw'],
+                        switch_led=cfg['pin']['solar_led'])
+wind = IndicatedSwitch(switch_pin=cfg['pin']['wind_sw'],
+                       switch_led=cfg['pin']['wind_led'])
+battery = IndicatedSwitch(switch_pin=cfg['pin']['batt_sw'],
+                          switch_led=cfg['pin']['batt_led'])

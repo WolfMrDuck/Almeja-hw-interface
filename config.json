@@ -50,6 +50,7 @@
 		"batt_temp3": 63
 	},
 	"core": {
+		"pwm_freq": 50000,
 		"read_period": 0.1,
 		"samples_per_read": 32,
 		"battery_wd_period": 1,

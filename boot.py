@@ -48,8 +48,10 @@ thermometers = {
                         threshold=cfg['threshold']['batt_temp3'])
         }
 controllers = {
-        "solar": VoltageController(pin_number=cfg['pin']['solar_vctr']),
-        "wind": VoltageController(pin_number=cfg['pin']['wind_vctr'])
+        "solar": VoltageController(pin_number=cfg['pin']['solar_vctr'],
+                                   freq=cfg['core']['pwm_freq']),
+        "wind": VoltageController(pin_number=cfg['pin']['wind_vctr'],
+                                  freq=cfg['creo']['pwm_freq'])
         }
 
 

@@ -50,6 +50,7 @@ def thr_battery_watchdog():
     for _, thermometer in thermometers.items():
         if thermometer.read() >= cfg['core']['temp_threshold']:
             battery.off()
+            load.off()
     time.sleep(cfg['core']['battery_wd_period'])
 
 def safe_solar_on():
